@@ -3,7 +3,7 @@ module github.com/RabiesDev/tls-client
 go 1.24
 
 require (
-	github.com/ooni/oohttp v0.8.0
+	github.com/ooni/oohttp v0.8.1
 	github.com/refraction-networking/utls v1.7.3
 )
 
