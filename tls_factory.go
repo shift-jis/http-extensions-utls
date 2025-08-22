@@ -1,4 +1,4 @@
-package tls_client
+package httpx
 
 import (
 	"crypto/tls"
@@ -8,16 +8,16 @@ import (
 	utls "github.com/refraction-networking/utls"
 )
 
-type SecureTLSFactory struct {
-	ClientProfile *utls.ClientHelloID
+type SecureTLSConnFactory struct {
+	TLSClientProfile *utls.ClientHelloID
 }
 
-func (factory *SecureTLSFactory) NewTLSConnection(conn net.Conn, config *tls.Config) oohttp.TLSConn {
-	if factory.ClientProfile == nil {
-		factory.ClientProfile = &utls.HelloChrome_Auto
+func (factory *SecureTLSConnFactory) CreateTLSConnection(conn net.Conn, config *tls.Config) oohttp.TLSConn {
+	if factory.TLSClientProfile == nil {
+		factory.TLSClientProfile = &utls.HelloChrome_Auto
 	}
 
-	uConfig := &utls.Config{
+	tlsConfig := &utls.Config{
 		RootCAs:                     config.RootCAs,
 		NextProtos:                  config.NextProtos,
 		ServerName:                  config.ServerName,
@@ -26,6 +26,7 @@ func (factory *SecureTLSFactory) NewTLSConnection(conn net.Conn, config *tls.Con
 		ClientSessionCache:          utls.NewLRUClientSessionCache(0),
 	}
 
-	uConn := utls.UClient(conn, uConfig, *factory.ClientProfile)
-	return &UTLSConnectionAdapter{UConn: uConn}
+	return &UTLSConnectionAdapter{
+		UConn: utls.UClient(conn, tlsConfig, *factory.TLSClientProfile),
+	}
 }

@@ -1,5 +1,7 @@
-# github.com/RabiesDev/tls-client
+# http-extensions-utls
 
-```shell
-go get github.com/RabiesDev/tls-client
-```
+Secure HTTP client with TLS/UTLS support.
+
+## 📄 License
+
+This project is licensed under the MIT License.

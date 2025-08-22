@@ -1,18 +1,17 @@
-module github.com/RabiesDev/tls-client
+module github.com/shift-jis/http-extensions-utls
 
 go 1.24
 
 require (
 	github.com/ooni/oohttp v0.8.1
-	github.com/refraction-networking/utls v1.7.3
+	github.com/refraction-networking/utls v1.8.0
 )
 
 require (
-	github.com/andybalholm/brotli v1.1.1 // indirect
-	github.com/cloudflare/circl v1.6.1 // indirect
-	github.com/klauspost/compress v1.17.11 // indirect
-	golang.org/x/crypto v0.36.0 // indirect
-	golang.org/x/net v0.38.0 // indirect
-	golang.org/x/sys v0.31.0 // indirect
-	golang.org/x/text v0.23.0 // indirect
+	github.com/andybalholm/brotli v1.2.0 // indirect
+	github.com/klauspost/compress v1.18.0 // indirect
+	golang.org/x/crypto v0.41.0 // indirect
+	golang.org/x/net v0.43.0 // indirect
+	golang.org/x/sys v0.35.0 // indirect
+	golang.org/x/text v0.28.0 // indirect
 )
